@@ -1,7 +1,7 @@
 ﻿using FluentAvalonia.UI.Controls;
+using StaX.Domain;
 using System.Reflection;
 using System.Text.Json;
-using StaX.Domain;
 
 namespace StaX.PluginConverter;
 
@@ -39,7 +39,15 @@ public static class StarterCreator
         {
             var json = JsonSerializer.Serialize(starter);
             Console.WriteLine($"{json}");
-            File.WriteAllText(allPluginPaths.StarterPath, json);
+
+            if (File.Exists(allPluginPaths.StarterPath))
+                File.Delete(allPluginPaths.StarterPath);
+
+            while (File.Exists(allPluginPaths.StarterPath) == false)
+            {
+                Console.WriteLine($"{allPluginPaths.StarterPath}");
+                File.WriteAllText(allPluginPaths.StarterPath, json);
+            }
         }
     }
 

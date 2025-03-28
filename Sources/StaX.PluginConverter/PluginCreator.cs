@@ -52,9 +52,12 @@ public static class PluginCreator
 
         foreach (string dirPath in Directory.GetDirectories(sourceDir))
         {
-            string dirName = Path.GetFileName(dirPath);
-            string destDirPath = Path.Combine(destinationDir, dirName);
-            CopyDirectory(dirPath, destDirPath);
+            if (dirPath != destinationDir)
+            {
+                string dirName = Path.GetFileName(dirPath);
+                string destDirPath = Path.Combine(destinationDir, dirName);
+                CopyDirectory(dirPath, destDirPath);
+            }
         }
     }
 }
