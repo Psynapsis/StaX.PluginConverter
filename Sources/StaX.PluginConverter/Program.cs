@@ -1,4 +1,4 @@
-﻿namespace StaX.PluginConverter;
+namespace StaX.PluginConverter;
 
 class Program
 {
@@ -72,7 +72,7 @@ class Program
             );
             //--PublishPlugin or - pp <= publish project<csproj path>
             //--PublishStx or - px <= publish project && create stx<csproj path>
-            return;
+            Environment.Exit(0);
         }
         else if (args.Length == 1)
         {
@@ -114,5 +114,7 @@ class Program
                     break;
             }
         }
+
+        Environment.Exit(0);
     }
 }
